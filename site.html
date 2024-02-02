@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Li2Zu/IbGdrUuAmXf3wGB2h3Vg7KnzLQ8mzSi5O+XpmA9Sxk1zoF02NxjncH+9W+HLer4z4y8QOl10mluv5pGQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* CSS styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        header {
+            background-color: #ff4d4d;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        main {
+            padding: 20px;
+        }
+        .content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .heart-button {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: background-color 0.3s, transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            outline: none;
+        }
+        .heart-button:hover {
+            background-color: #ff3333;
+            transform: translateY(-2px);
+        }
+        .heart-button:hover span {
+            display: none;
+        }
+        .heart-button:hover:after {
+            content: 'Yes, I will!';
+        }
+        .heart-icon {
+            margin-right: 10px;
+        }
+        footer {
+            background-color: #ff4d4d;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+        }
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .heart {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background-image: url('https://cdn.pixabay.com/photo/2013/07/13/11/38/heart-158690_960_720.png');
+            background-size: cover;
+            animation: heart-animation 2s infinite;
+            z-index: 9999;
+        }
+        @keyframes heart-animation {
+            0% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2) rotate(45deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Will You Be My Valentine ?</h1>
+    </header>
+
+    <main>
+
+        <section class="content">
+
+            <p>My Dearest Disha,</p>
+            <p>Now, Im not going to deny that I was aware of your beauty. But the point is, this has nothing to do with your beauty. As I got to know you, I began to realise that beauty was the least of your qualities. I became fascinated by your goodness. I was drawn in by it. I didnt understand what was happening to me. And it was only when I began to feel actual, physical pain every time you left the room that it finally dawned on me: I was in love, for the first time in my life. I knew it was hopeless, but that didnt matter to me. And its not that I want to have you. All I want is to deserve you.</p>
+            <p>So, with all my heart, I ask: Will you be my Valentine?</p>
+            <p>Yours,</p>
+            <p>Aadi</p>
+
+            <div class="button-container">
+                <button type="button" class="heart-button" onclick="showHeartsAndCongratulate('No')"><i class="fas fa-heart heart-icon"></i><span>No</span></button>
+                <form action="#" onsubmit="showHeartsAndCongratulate('Yes')">
+                    <button type="submit" id="yesButton" class="heart-button"><i class="fas fa-heart heart-icon"></i><span>Yes, I will!</span></button>
+                </form>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p> Made on company time.</p>
+    </footer>
+
+    <script>
+        function showHeartsAndCongratulate(response) {
+            showHearts();
+            congratulate(response);
+        }
+
+        function showHearts() {
+            const heart1 = createHeart();
+            const heart2 = createHeart();
+            const heart3 = createHeart();
+
+            document.body.appendChild(heart1);
+            document.body.appendChild(heart2);
+            document.body.appendChild(heart3);
+
+            setTimeout(() => {
+                heart1.remove();
+                heart2.remove();
+                heart3.remove();
+            }, 2000);
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.animationDuration = Math.random() * 2 + 1 + 's';
+            return heart;
+        }
+
+        function congratulate(response) {
+    // Open a new window with a congratulatory message
+    const congratsWindow = window.open('', '_blank');
+    congratsWindow.document.write('<html><head><title>Congratulations </title></head><body style="background-color: #7630a8ab; display: flex; justify-content: center; align-items: center;">');
+    congratsWindow.document.write('<div style="text-align: center;">');
+    congratsWindow.document.write('<h2 style="text-align:center;">Congratulations!</h2>');
+    // Replace 'path_to_your_gif' with the actual path to your GIF file
+    congratsWindow.document.write('<iframe src="https://giphy.com/embed/m5SLTWdACYbUe9Ge9F" width="360" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/Turunduslabor-suur-must-koer-m5SLTWdACYbUe9Ge9F">via GIPHY</a></p>');
+    congratsWindow.document.write(`<p style="text-align:center;">${response === 'Yes' ? 'You said YES!' : 'You said YES!'}</p>`);
+    congratsWindow.document.write('</div>');
+    congratsWindow.document.write('</body></html>');
+    // Close the new window after 5 seconds
+    // setTimeout(() => {
+    //     congratsWindow.close();
+    // }, 5000);
+}
+
+    </script>
+
+</body>
+</html>
